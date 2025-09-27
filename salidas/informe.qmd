@@ -1,0 +1,44 @@
+---
+title: "Iris: las flores preferidas de la Estadística"
+author: "Pomona Sprout"
+format:
+  html:
+    embed-resources: true
+editor: source
+lang: es
+---
+
+## Introducción
+
+**Iris** es un género de plantas rizomatosas de la familia Iridaceae. El mayor género de la familia con más de 300 especies, además de muchos híbridos y cultivares. Además del nombre del género, *iris* se usa comúnmente para referirse a todas las especies, así como a otros varios géneros estrechamente emparentados y a una subdivisión dentro del género.
+
+## Materiales y métodos
+
+El famoso conjunto de datos de **iris** proporciona las medidas en centímetros de las variables longitud y ancho del sépalo y de los pétalos para 50 flores de cada una de 3 especies de iris: setosa, versicolor y virginica (@fig-iris). Se realizó un estudio descriptivo y se ajustaron dos modelos de regresión lineal simple. 
+
+![Tres especies de la planta de iris.](fotos_iris.jpg){width=80% #fig-iris}
+
+## Resultados
+
+La relación entre el ancho y el largo del sépalo para cada especie es aproximadamente lineal (@fig-dispersion). Mientras que la variedad setosa presenta, en general, menor largo del sépalo, también es la que presenta mayores valores del ancho del sépalo (@fig-boxplot).
+
+::: {#fig-exploratorio layout-ncol=2}
+
+![Relación entre el ancho y el largo del sépalo.](diagrama_puntos.png){#fig-dispersion}
+
+![Ancho y largo del sépalo para cada especie.](boxplot.png){#fig-boxplot}
+
+Análisis exploratorio
+:::
+
+```{r}
+#| echo: false
+mod_petal <- readRDS(file = "rtdo_regr_petal.rds")
+mod_sepal <- readRDS(file = "rtdo_regr_sepal.rds")
+```
+
+El modelo de regresión lineal del ancho del sépalo en función de su largo arrojó un valor de $R^2 =$ `r round(summary(mod_sepal)$r.squared, 2)`, mientras que la regresión del ancho del pétalo en función de su largo resultó en $R^2 =$ `r round(summary(mod_petal)$r.squared, 2)`.
+
+## Conclusión
+
+Se concluye que las flores de iris son muy bellas.
